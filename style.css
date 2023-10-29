@@ -79,7 +79,7 @@
 }
 .Content {
   font-size: 16px;
-  font-family: Poppins;
+  font-family: Inter;
   font-weight: 400;
   line-height: 1.15;
   text-transform: none;
@@ -87,7 +87,7 @@
 }
 .Heading {
   font-size: 32px;
-  font-family: Poppins;
+  font-family: Inter;
   font-weight: 700;
   line-height: 1.15;
   text-transform: none;
@@ -96,23 +96,21 @@
 .Body {
   font-size: 14px;
   font-style: normal;
-  font-family: Poppins;
+  font-family: Roboto;
   font-weight: 400px;
   font-stretch: normal;
-  touch-action: manipulation;
-  user-zoom: fixed;
 }
 .Caption {
   font-size: 14px;
   font-style: normal;
-  font-family: Poppins;
+  font-family: Roboto;
   font-weight: 400px;
   font-stretch: normal;
 }
 .Button {
   font-size: 14px;
   font-style: normal;
-  font-family: Poppins;
+  font-family: Roboto;
   font-weight: 700px;
   font-stretch: normal;
 }
