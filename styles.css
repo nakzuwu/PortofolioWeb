@@ -278,6 +278,134 @@ footer {
         max-width: 100%;
     }
 }
+
+/* Styling for Portfolio Repos Section */
+.portfolio-repos {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(300px, 1fr)); /* Menyediakan 5 kolom dengan lebar minimal 300px */
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center; /* Menjaga agar repositori tetap rata tengah */
+    padding: 0 10px; /* Menambahkan padding untuk memberi jarak */
+    align-items: start; /* Agar kartu-kartu tidak terlalu rapat di bagian atas */
+    width: 100%;
+}
+
+/* Styling for portfolio content container */
+.portfolio-content {
+    display: flex; /* Menggunakan flexbox */
+    justify-content: center; /* Memberikan jarak antar profile dan repo-section */
+    align-items: flex-start; /* Menjaga profil dan repositori di atas */
+    gap: 2rem; /* Menambahkan jarak antar elemen */
+    width: 100%; /* Menjaga agar seluruh kontainer menggunakan lebar penuh */
+    flex-wrap: wrap; /* Agar layout tetap fleksibel */
+}
+
+/* Styling for Profile Section */
+.profile {
+    width: 300px; /* Lebar tetap untuk profil */
+    text-align: center; /* Menjaga teks di profil tetap terpusat */
+}
+
+.profile-photo img {
+    width: 300px; 
+    height: 300px;  
+    object-fit: cover;  
+    margin-bottom: 1rem;
+}
+
+.profile-info h3 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.profile-info p {
+    font-size: 1.2rem;
+    color: #c7c7c7;
+}
+
+/* Styling for individual repo cards */
+.repo-card {
+    background: #1e1e1e;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid #333;
+    transition: transform 0.3s ease;
+    width: 100%;  /* Pastikan kartu memenuhi lebar grid */
+    max-width: 350px;  /* Membatasi lebar maksimum card */
+    margin: 0 auto; /* Menjamin kartu rata tengah jika ada lebih sedikit kartu */
+}
+
+.repo-card:hover {
+    transform: translateY(-5px);
+}
+
+.repo-card img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.repo-card h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.repo-card p {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.repo-card .repo-lang {
+    display: inline-block;
+    background: #333;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #fff;
+}
+
+.repo-card a {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+
+.repo-card a:hover {
+    background: #007bff;
+}
+
+@media (max-width: 768px) {
+    .portfolio-repos {
+        grid-template-columns: 1fr; /* Menampilkan 1 kolom pada layar kecil */
+    }
+
+    .portfolio-content {
+        flex-direction: column; /* Menyusun profile dan repositori secara vertikal */
+        align-items: center; /* Menjaga agar semua item berada di tengah */
+    }
+}
+/* Image and Video Styles */
+.portfolio-images img,
+.portfolio-videos video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Grid Styles */
 .grid {
   column-count: 3;
   column-gap: 1rem;
@@ -300,15 +428,6 @@ footer {
   background: transparent;
 }
 
-
-.grid-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: transparent;
-}
-
 .grid-item img,
 .grid-item video {
   pointer-events: none;
@@ -319,13 +438,4 @@ footer {
   border-radius: 10px;
   display: block;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-.portfolio-images img,
-.portfolio-videos video {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
