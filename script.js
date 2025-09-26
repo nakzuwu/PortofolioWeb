@@ -1,49 +1,48 @@
-fetch('data/portfolio.json')
-  .then(res => res.json())
-  .then(data => {
-    const imageContainer = document.querySelector('.portfolio-images');
-    const videoContainer = document.querySelector('.portfolio-videos');
+fetch("data/portfolio.json")
+  .then((res) => res.json())
+  .then((data) => {
+    const imageContainer = document.querySelector(".portfolio-images");
+    const videoContainer = document.querySelector(".portfolio-videos");
 
-    data.images.forEach(src => {
-      const img = document.createElement('img');
+    data.images.forEach((src) => {
+      const img = document.createElement("img");
       img.src = src;
       img.alt = "Portfolio Image";
       imageContainer.appendChild(img);
     });
 
-    data.videos.forEach(src => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'grid-item';
+    data.videos.forEach((src) => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "grid-item";
 
-        const video = document.createElement('video');
-        video.src = src;
-        video.muted = true;
-        video.autoplay = true;
-        video.loop = true;
-        video.playsInline = true;
-        video.setAttribute('playsinline', '');
-        video.setAttribute('muted', '');
-        video.setAttribute('preload', 'auto');
-        video.controls = false;
-        video.style.pointerEvents = "none";
-        video.style.userSelect = "none";
-        video.style.display = "block";
-        video.style.width = "100%";
-        video.style.borderRadius = "10px";
+      const video = document.createElement("video");
+      video.src = src;
+      video.muted = true;
+      video.autoplay = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.setAttribute("playsinline", "");
+      video.setAttribute("muted", "");
+      video.setAttribute("preload", "auto");
+      video.controls = false;
+      video.style.pointerEvents = "none";
+      video.style.userSelect = "none";
+      video.style.display = "block";
+      video.style.width = "100%";
+      video.style.borderRadius = "10px";
 
-        wrapper.appendChild(video);
-        videoContainer.appendChild(wrapper);
+      wrapper.appendChild(video);
+      videoContainer.appendChild(wrapper);
     });
-
   })
-  .catch(err => console.error("❌ Gagal memuat portfolio.json:", err));
-document.addEventListener('contextmenu', function(e) {
-    if (e.target.tagName === 'IMG' || e.target.tagName === 'VIDEO') {
-      e.preventDefault();
-    }
-  });
+  .catch((err) => console.error("❌ Gagal memuat portfolio.json:", err));
+document.addEventListener("contextmenu", function (e) {
+  if (e.target.tagName === "IMG" || e.target.tagName === "VIDEO") {
+    e.preventDefault();
+  }
+});
 
-  document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Daftar repositori manual
   const repos = [
     {
@@ -51,47 +50,47 @@ document.addEventListener('contextmenu', function(e) {
       description: "Website untuk aplikasi Usekai, menggunakan Blade.",
       url: "https://github.com/nakzuwu/UsekaiWeb",
       language: "Laravel",
-      image: "repo-image.jpg"
+      image: "repo-image.jpg",
     },
     {
       name: "VisionAidBackend",
       description: "Backend untuk aplikasi VisionAid, menggunakan Python.",
       url: "https://github.com/nakzuwu/VisionAidBackend",
       language: "Python",
-      image: "repo-image.jpg"  // Ganti dengan gambar repositori jika ada
+      image: "repo-image.jpg", // Ganti dengan gambar repositori jika ada
     },
     {
       name: "VisionAidFrontend",
       description: "Frontend untuk aplikasi VisionAid, menggunakan Dart.",
       url: "https://github.com/nakzuwu/VisionAidFrontend",
       language: "Flutter",
-      image: "repo-image.jpg"
+      image: "repo-image.jpg",
     },
     {
       name: "Reika-Bot-Discord",
       description: "Discord bot yang dibuat dengan Python.",
       url: "https://github.com/nakzuwu/Reika-Bot-Discord",
       language: "Python",
-      image: "repo-image.jpg"
+      image: "repo-image.jpg",
     },
     {
       name: "WarisanBiru ",
       description: "Sebuah Game Pembelajaran mengenai Terumbu Karang",
       url: "https://github.com/nakzuwu/WarisanBiru",
       language: "C#",
-      image: "repo-image.jpg"
-    }
+      image: "repo-image.jpg",
+    },
   ];
 
   const reposContainer = document.querySelector(".portfolio-repos");
 
-  repos.forEach(repo => {
+  repos.forEach((repo) => {
     const repoCard = document.createElement("div");
     repoCard.classList.add("repo-card");
 
     // Gambar repositori
     const repoImage = document.createElement("img");
-    repoImage.src = repo.image;  // Menggunakan gambar repositori yang dimasukkan manual
+    repoImage.src = repo.image; // Menggunakan gambar repositori yang dimasukkan manual
     repoImage.alt = repo.name;
     repoCard.appendChild(repoImage);
 
@@ -113,3 +112,50 @@ document.addEventListener('contextmenu', function(e) {
     reposContainer.appendChild(repoCard);
   });
 });
+
+const tabs = document.querySelectorAll(".tab-btn");
+const contents = document.querySelectorAll(".tab-content");
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    // reset tab aktif
+    tabs.forEach((t) => t.classList.remove("active-tab"));
+    contents.forEach((c) => c.classList.add("hidden"));
+
+    // aktifkan tab baru
+    tab.classList.add("active-tab");
+    document
+      .querySelector(`#tab-${tab.dataset.tab}`)
+      .classList.remove("hidden");
+  });
+});
+
+const words = ["Creative!", "Happy!", "Smile!", "Positive!", "Humble!"];
+const wordEl = document.getElementById("changing-word");
+let index = 0;
+let animating = false;
+
+function changeWord() {
+  if (animating) return;
+  animating = true;
+
+  // Animasi keluar
+  wordEl.style.animation = "slideOut 0.4s ease forwards";
+
+  setTimeout(() => {
+    // Ganti kata setelah keluar
+    index = (index + 1) % words.length;
+    wordEl.textContent = words[index];
+
+    // Animasi masuk
+    wordEl.style.animation = "slideIn 0.4s ease forwards";
+
+    // Selesai animasi
+    setTimeout(() => {
+      animating = false;
+    }, 400);
+  }, 400);
+}
+
+// Ganti setiap 2 detik
+setInterval(changeWord, 2000);

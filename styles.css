@@ -1,411 +1,554 @@
-/* Reset and base styles */
+/* =========================
+   RESET & BASE STYLES
+========================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #1e1e1e;
-    color: white;
-    line-height: 1.6;
-    text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background-color: #1e1e1e;
+  color: white;
+  line-height: 1.6;
+  text-align: center;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-/* Utility classes */
+/* =========================
+   UTILITIES
+========================= */
 .container {
-    width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
-    padding: 0 20px;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #d67718;
-    color: white;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff4d91;
+  color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #e68a2e;
+  background-color: #ff74ad;
 }
 
 .section {
-    padding: 80px 0;
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeDown 0.8s ease forwards;
 }
 
 .section-title {
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 40px;
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #ff4d91;
 }
 
-/* Header styles */
+/* =========================
+   HEADER
+========================= */
 header {
-    background-color: #1e1e1e;
-    padding: 20px 0;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    text-align: left;
+  background-color: #1e1e1e;
+  padding: 5px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    width: 105px;
-    height: auto;
-    mix-blend-mode: lighten;
+  width: 50px;
+  height: auto;
+  mix-blend-mode: lighten;
+  animation: fadeDown 0.8s ease forwards;
 }
 
 .nav-links {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 .nav-links a {
-    font-size: 18px;
-    font-weight: 600;
-    transition: color 0.3s ease;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #d67718;
+  color: #ff4d91;
 }
 
-/* Hero section */
+/* =========================
+   HERO SECTION
+========================= */
 .hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: url('Banner1.png') no-repeat center center/cover;
-    margin-top: 125px;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('Banner1.png') no-repeat center center/cover;
+  margin-top: 125px;
+}
+
+.hero-content {
+  animation: fadeDown 1s ease forwards;
 }
 
 .hero-content h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
+  font-size: 50px;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
-    font-size: 28px;
-    max-width: 800px;
-    margin: 0 auto;
+  font-size: 28px;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #ccc;
 }
 
-/* About section */
-.about {
-    background-color: #2a2a2a;
+/* =========================
+   ANIMATED TEXT
+========================= */
+.animated-text-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.animated-text-shift {
+  transform: translateX(90px);
+  transition: transform 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .animated-text-shift {
+    transform: translateX(20px);
+  }
+}
+
+.animated-text {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: left;
+  color: #ffffff;
+  overflow: hidden;
+  height: 1.2em;
+}
+
+.animated-text span {
+  display: inline-block;
+  color: #ff4da6;
+  animation: slideIn 0.6s ease forwards;
+}
+
+/* masuk dari atas */
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateY(-100%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* keluar ke bawah */
+@keyframes slideOut {
+  0% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(100%); }
+}
+
+/*========================= */
+/* ABOUT SECTION */
+.section.about {
+  background-color: #2a2a2a;
+  padding: 80px 20px;
 }
 
 .about-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 28px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 18px; /* lebih kecil dari sebelumnya */
+  line-height: 1.8;
+  color: #e0e0e0;
+  text-align: justify;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 77, 145, 0.15);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInDown 0.8s ease forwards;
 }
 
-.about-content ul {
-    display: inline-block;
-    text-align: left;
-    margin: 20px auto;
+/* efek garis pink tipis di sisi kiri paragraf */
+.about-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff4d91, #ff74b6);
+  border-radius: 3px;
 }
 
-/* Collection section */
+/* link Instagram */
+.about-content a {
+  color: #ff4d91;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.about-content a:hover {
+  color: #ff74b6;
+  text-shadow: 0 0 10px rgba(255, 77, 145, 0.7);
+}
+
+/* animasi masuk dari atas */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .about-content {
+    font-size: 16px;
+    padding: 25px 20px;
+  }
+}
+
+.vscode-style {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: left;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 16px;
+  color: #dcdcdc;
+  line-height: 1.8;
+  overflow-x: auto;
+  box-shadow: 0 0 20px rgba(255, 77, 145, 0.15);
+  position: relative;
+  animation: fadeInDown 0.8s ease forwards;
+}
+
+/* Bar ala VS Code */
+.vscode-style::before {
+  content: "";
+  display: block;
+  height: 30px;
+  width: 100%;
+  background: linear-gradient(to right, #2d2d2d, #252526);
+  border-radius: 10px 10px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Tombol window */
+.vscode-style::after {
+  content: "●";
+  color: #ff5f56;
+  font-size: 18px;
+  position: absolute;
+  top: 3px;
+  left: 12px;
+  letter-spacing: 5px;
+  text-shadow: 12px 0 #ffbd2e, 24px 0 #27c93f;
+}
+
+/* Syntax highlight style */
+.vscode-style .comment {
+  color: #6a9955;
+  font-style: italic;
+}
+
+.vscode-style .keyword {
+  color: #569cd6;
+}
+
+.vscode-style .string {
+  color: #ce9178;
+}
+
+.vscode-style .number {
+  color: #b5cea8;
+}
+
+.vscode-style .property {
+  color: #9cdcfe;
+}
+
+.vscode-style .operator {
+  color: #d4d4d4;
+}
+
+.vscode-style .function {
+  color: #dcdcaa;
+}
+
+.vscode-style .method {
+  color: #4ec9b0;
+}
+
+.vscode-style a {
+  color: #ff4d91;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.vscode-style a:hover {
+  color: #ff74b6;
+  text-shadow: 0 0 8px rgba(255, 77, 145, 0.7);
+}
+
+/* Animasi masuk dari atas */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .vscode-style {
+    font-size: 14px;
+    padding: 20px;
+  }
+}
+
+
+
+/* =========================
+   COLLECTION SECTION
+========================= */
 .collection {
-    background-color: #1e1e1e;
+  background-color: #1e1e1e;
+  animation-delay: 0.5s;
 }
 
 .collection-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .collection-row {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
 }
 
 .collection-card {
-    background-color: #333;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    width: 297px;
-    height: 399px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  width: 297px;
+  height: 399px;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeDown 0.8s ease forwards;
 }
 
 .collection-card:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .collection-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.card-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7);
+/* =========================
+   PORTFOLIO SECTION
+========================= */
+.section.portfolio {
+  padding: 80px 20px;
+  text-align: center;
+  animation-delay: 0.6s;
 }
 
-.card-content h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-/* Inspiration section */
-.inspiration {
-    background-color: #2a2a2a;
-}
-
-.inspiration-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.inspiration-img {
-    width: 100%;
-    max-width: 488px;
-    height: 330px;
-    border-radius: 30px;
-    transition: transform 0.3s ease;
-    object-fit: cover;
-}
-
-.inspiration-img:hover {
-    transform: scale(1.05);
-}
-
-/* Social section */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.social-links a img {
-    width: 60px;
-    height: 60px;
-    transition: transform 0.3s ease;
-}
-
-.social-links a:hover img {
-    transform: scale(1.1);
-}
-
-/* Footer */
-footer {
-    background-color: #1e1e1e;
-    padding: 40px 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .collection-row {
-        gap: 20px;
-    }
-    
-    .collection-card {
-        width: 250px;
-        height: 350px;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        gap: 15px;
-    }
-    
-    .hero-content h1 {
-        font-size: 36px;
-    }
-    
-    .hero-content p {
-        font-size: 20px;
-    }
-    
-    .about-content {
-        font-size: 20px;
-    }
-    
-    .collection-row {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .social-links {
-        flex-wrap: wrap;
-    }
-    
-    .inspiration-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .inspiration-img {
-        max-width: 100%;
-    }
-}
-
-/* Styling for Portfolio Repos Section */
-.portfolio-repos {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(300px, 1fr)); /* Menyediakan 5 kolom dengan lebar minimal 300px */
-    gap: 1.5rem;
-    margin-top: 2rem;
-    justify-content: center; /* Menjaga agar repositori tetap rata tengah */
-    padding: 0 10px; /* Menambahkan padding untuk memberi jarak */
-    align-items: start; /* Agar kartu-kartu tidak terlalu rapat di bagian atas */
-    width: 100%;
-}
-
-/* Styling for portfolio content container */
-.portfolio-content {
-    display: flex; /* Menggunakan flexbox */
-    justify-content: center; /* Memberikan jarak antar profile dan repo-section */
-    align-items: flex-start; /* Menjaga profil dan repositori di atas */
-    gap: 2rem; /* Menambahkan jarak antar elemen */
-    width: 100%; /* Menjaga agar seluruh kontainer menggunakan lebar penuh */
-    flex-wrap: wrap; /* Agar layout tetap fleksibel */
-}
-
-/* Styling for Profile Section */
 .profile {
-    width: 300px; /* Lebar tetap untuk profil */
-    text-align: center; /* Menjaga teks di profil tetap terpusat */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 40px auto;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeDown 1s ease forwards;
+}
+
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ff4d91;
+  box-shadow: 0 0 10px rgba(255, 77, 145, 0.4);
+  margin-bottom: 15px;
 }
 
 .profile-photo img {
-    width: 300px; 
-    height: 300px;  
-    object-fit: cover;  
-    margin-bottom: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .profile-info h3 {
-    font-size: 2rem;
-    font-weight: bold;
+  margin: 8px 0 2px;
+  font-size: 1.6em;
+  font-weight: 600;
 }
 
 .profile-info p {
-    font-size: 1.2rem;
-    color: #c7c7c7;
+  margin: 0;
+  color: #c7c7c7;
+  font-size: 1em;
 }
 
-/* Styling for individual repo cards */
+/* =========================
+   TABS
+========================= */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  border-bottom: 2px solid #333;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #bbb;
+  font-weight: 500;
+  font-size: 1em;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover,
+.tab-btn.active-tab {
+  color: #ff4d91;
+  border-bottom: 3px solid #ff4d91;
+}
+
+/* =========================
+   TAB CONTENT
+========================= */
+.tab-container {
+  width: 100%;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeDown 0.5s ease forwards;
+}
+
+.tab-content:not(.hidden) {
+  display: block;
+}
+
+/* =========================
+   GITHUB REPOS GRID
+========================= */
+.portfolio-repos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
 .repo-card {
-    background: #1e1e1e;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    border: 1px solid #333;
-    transition: transform 0.3s ease;
-    width: 100%;  /* Pastikan kartu memenuhi lebar grid */
-    max-width: 350px;  /* Membatasi lebar maksimum card */
-    margin: 0 auto; /* Menjamin kartu rata tengah jika ada lebih sedikit kartu */
+  background: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1.2rem;
+  width: 100%;
+  max-width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeDown 0.8s ease forwards;
 }
 
 .repo-card:hover {
-    transform: translateY(-5px);
-}
-
-.repo-card img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .repo-card h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #fff;
+  font-size: 1.3rem;
+  color: #ff4d91;
+  margin-bottom: 8px;
 }
 
 .repo-card p {
-    font-size: 1rem;
-    color: #fff;
-    margin-bottom: 1rem;
-}
-
-.repo-card .repo-lang {
-    display: inline-block;
-    background: #333;
-    padding: 0.5rem;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    color: #fff;
+  color: #ccc;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
 }
 
 .repo-card a {
-    display: inline-block;
-    background: #333;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-    transition: background 0.3s ease;
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
 }
 
 .repo-card a:hover {
-    background: #007bff;
+  background: #ff4d91;
 }
 
-@media (max-width: 768px) {
-    .portfolio-repos {
-        grid-template-columns: 1fr; /* Menampilkan 1 kolom pada layar kecil */
-    }
-
-    .portfolio-content {
-        flex-direction: column; /* Menyusun profile dan repositori secara vertikal */
-        align-items: center; /* Menjaga agar semua item berada di tengah */
-    }
-}
-/* Image and Video Styles */
-.portfolio-images img,
-.portfolio-videos video {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Grid Styles */
+/* =========================
+   IMAGE & VIDEO GRID
+========================= */
 .grid {
   column-count: 3;
   column-gap: 1rem;
@@ -414,28 +557,124 @@ footer {
 .grid-item {
   break-inside: avoid;
   margin-bottom: 1rem;
-}
-
-.grid-item {
   position: relative;
-}
-
-.grid-item::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: transparent;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeDown 0.8s ease forwards;
 }
 
 .grid-item img,
 .grid-item video {
   pointer-events: none;
   user-select: none;
-  -webkit-user-drag: none;
   width: 100%;
   height: auto;
   border-radius: 10px;
   display: block;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
 }
+
+.grid-item:hover img,
+.grid-item:hover video {
+  transform: scale(1.05);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+  background-color: #1e1e1e;
+  padding: 40px 0;
+  animation: fadeDown 1s ease forwards;
+}
+
+/* =========================
+   ANIMATION DEFINITIONS
+========================= */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .grid { column-count: 2; }
+  .animated-text-shift { transform: translateX(20px); }
+}
+
+@media (max-width: 480px) {
+  .grid { column-count: 1; }
+  .tabs { flex-wrap: wrap; gap: 10px; }
+  .profile-photo { width: 120px; height: 120px; }
+}
+
+/* Linktree-style Social Section */
+.linktree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-item img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(255,255,255,0.4));
+  transition: transform 0.3s ease;
+}
+
+.social-item span {
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Hover effects */
+.social-item:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #ff4da6 0%, #ff7b9c 100%);
+  box-shadow: 0 5px 15px rgba(255, 77, 166, 0.3);
+}
+
+.social-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .social-item {
+    max-width: 90%;
+    font-size: 0.95rem;
+  }
+
+  .social-item img {
+    width: 25px;
+    height: 25px;
+  }
+}
+

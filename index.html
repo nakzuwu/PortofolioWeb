@@ -20,7 +20,7 @@
         <div class="nav-links">
           <a href="#home">Home</a>
           <a href="#about">About</a>
-          <a href="#collection">Collection</a>
+          <a href="#portfolio">Portfolio</a>
         </div>
       </div>
     </header>
@@ -28,96 +28,124 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-content">
-        <h1>Stay <span>Creative!</span></h1>
-        <p>Photo Editor, Video Editor, Newbie Programmer, and Gamer.</p>
+        <div class="animated-text-shift">
+          <h1 class="animated-text">
+            Stay <span id="changing-word">Creative!</span>
+          </h1>
+        </div>
+        <p>Editor, Graphic Designer, & Web Developer.</p>
       </div>
     </section>
 
-    <!-- About Section -->
     <section class="section about" id="about">
       <div class="container">
-        <h2 class="section-title">Hello there!</h2>
-        <div class="about-content">
-          <p>
-            Hello, My name is nakzuwu, u can call me nakuzu, nakzuwu, enkajet,
-            nkz, or whatever. I'm a graphic designer since 2021. I'm using
-            Photoshop, After Effect, and Premiere Pro for my project. If you are
-            interested in my design, my commission is open at my Instagram
-            <a href="https://www.instagram.com/nkzdzn" target="_blank"
-              >@nkzdzn</a
-            >.
-          </p>
+        <h2 class="section-title">&lt;About/&gt;</h2>
+        <div class="about-content vscode-style">
+          <pre><code>
+            <span class="comment">// Hi there! I'm nkz 😸</span>
+            <span class="keyword">const</span> name <span class="operator">=</span> <span class="string">"nakzuwu"</span>;
+            <span class="keyword">const</span> aliases <span class="operator">=</span> [<span class="string">"nakuzu"</span>, <span class="string">"enkajet"</span>, <span class="string">"nkz"</span>];
+            <span class="keyword">const</span> aboutMe <span class="operator">=</span> {
+              <span class="property">role</span>: <span class="string">"Graphic Designer & Web Developer"</span>,
+              <span class="property">since</span>: <span class="number">2021</span>,
+              <span class="property">tools</span>: [<span class="string">"Photoshop"</span>, <span class="string">"After Effect"</span>, <span class="string">"Premiere Pro"</span>],
+              <span class="property">design_commission</span>: <span class="string"><a href="https://www.instagram.com/nkzdzn" target="_blank">@nkzdzn</a></span>,
+              <span class="property">description</span>: <span class="string">
+                "Hello! My name is nakzuwu, you can call me nakuzu, nkz, or whatever 😆.
+                I'm a graphic designer since 2021 and love creating unique visuals.
+                I use Photoshop, After Effect, and Premiere Pro for my works.
+                I’m also exploring web development to bring my ideas to life on the web!"
+              </span>
+            };
+
+          <span class="function">console</span>.<span class="method">log</span>(<span class="string">"My bubub is Reika Valencia ❤️"</span>);
+
+          </code></pre>
         </div>
       </div>
     </section>
+
 <!-- Portfolio Section -->
 <section class="section portfolio" id="portfolio">
   <div class="container">
-    <h2 class="section-title">My Portfolio</h2>
-    
-    <!-- Flex container untuk Profile dan Repositori -->
-    <div class="portfolio-content">
-      <!-- Profil Section -->
-      <div class="profile">
-        <div class="profile-photo">
-          <img src="profile.jpeg" alt="Profile Photo" />
-        </div>
-        <div class="profile-info">
-          <h3>nkz</h3>
-          <p>@nakzuwu</p>
-          <p>Developer & Designer</p>
+    <h2 class="section-title">&lt;My_Portfolio/&gt;</h2>
+  
+    <!-- Profile -->
+    <div class="profile">
+      <div class="profile-photo">
+        <img src="profile.jpeg" alt="Profile Photo" />
+      </div>
+      <div class="profile-info">
+        <h3>nkz</h3>
+        <p>@nakzuwu</p>
+        <p>Developer & Designer</p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active-tab" data-tab="repos">GitHub Projects</button>
+      <button class="tab-btn" data-tab="images">Images</button>
+      <button class="tab-btn" data-tab="videos">Videos</button>
+    </div>
+
+    <!-- Tab Contents -->
+    <div class="tab-container">
+      <!-- GitHub Repos -->
+      <div id="tab-repos" class="tab-content">
+        <div class="repo-section">
+          <div class="portfolio-repos">
+          </div>
         </div>
       </div>
-      <div class="repo-section">
-        <div class="portfolio-repos"></div> <!-- Tempat repositori akan dimasukkan -->
+
+      <!-- Images -->
+      <div id="tab-images" class="tab-content hidden">
+        <div class="container">
+          <h3>Images</h3>
+          <div class="portfolio-images grid">
+          </div>
+        </div>
       </div>
-      <div class="container">
-        <h2 class="section-title">My Portfolio</h2>
-        <h3>Images</h3>
-        <div class="portfolio-images grid"></div>
-        <h3>Videos</h3>
-        <div class="portfolio-videos grid"></div>
+
+      <!-- Videos -->
+      <div id="tab-videos" class="tab-content hidden">
+        <div class="container">
+          <h3>Videos</h3>
+          <div class="portfolio-videos grid">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 
+<!-- Social Section -->
+<section class="section social">
+  <div class="container">
+    <h2 class="section-title">&lt;social/&gt;</h2>
+    <div class="social-links linktree">
+      <a href="https://discord.gg/PsRbf8v3K2" target="_blank" class="social-item">
+        <img src="Discord logo.png" alt="Discord" />
+        <span>Join my Discord</span>
+      </a>
+      <a href="https://www.instagram.com/nkzdzn" target="_blank" class="social-item">
+        <img src="Instagram logo.png" alt="Instagram" />
+        <span>Follow on Instagram</span>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100092551510270" target="_blank" class="social-item">
+        <img src="facebook logo.png" alt="Facebook" />
+        <span>Add on Facebook</span>
+      </a>
+      <a href="https://steamcommunity.com/id/_nkz/" target="_blank" class="social-item">
+        <img src="Steam logo.png" alt="Steam" />
+        <span>View my Steam Profile</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <!-- Portfolio Section -->
-    <section class="section portfolio" id="portfolio">
-      
-    </section>
-
-    <!-- Social Section -->
-    <section class="section social">
-      <div class="container">
-        <h2 class="section-title">Social Media</h2>
-        <div class="social-links">
-          <a href="https://discord.gg/PsRbf8v3K2" target="_blank">
-            <img src="Discord logo.png" alt="Discord" />
-          </a>
-          <a href="https://www.instagram.com/naklele" target="_blank">
-            <img src="Instagram logo.png" alt="Instagram" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/mohammad-farkhan-mukharrom-029600255/"
-            target="_blank"
-          >
-            <img src="linkedin logo.png" alt="LinkedIn" />
-          </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=100092551510270"
-            target="_blank"
-          >
-            <img src="facebook logo.png" alt="Facebook" />
-          </a>
-          <a href="https://steamcommunity.com/id/_nkz/" target="_blank">
-            <img src="Steam logo.png" alt="Steam" />
-          </a>
-        </div>
-      </div>
-    </section>
 
     <!-- Footer -->
     <footer>
