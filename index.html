@@ -1,156 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>enkajet</title>
+    <title>enkajet - Graphic Designer & Web Developer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="nkz - Graphic Designer, Video Editor & Web Developer. Creative portfolio showcasing design works and development projects."
+    />
+    <meta
+      name="keywords"
+      content="graphic designer, web developer, video editor, portfolio, photoshop, after effects, premiere pro, design commission"
+    />
+    <meta name="author" content="nkz" />
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="og:title" content="nkz - Portfolio" />
+    <meta
+      property="og:description"
+      content="Graphic Designer, Video Editor & Web Developer"
+    />
+    <!-- <meta property="og:image" content="https://yourdomain.com/profile.jpeg" />
+    <meta property="og:url" content="https://yourdomain.com" /> -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;900&family=Poppins:wght@100;900&family=Roboto:wght@100;900&display=swap"
     />
-    <!-- Add the favicon link here -->
-    <link rel="icon" href="logo.png" type="image/png" />
+    <!-- Preload untuk performa -->
+    <link rel="preload" href="Logo.png" as="image" />
+    <link rel="preload" href="profile.jpeg" as="image" />
+    <link rel="preload" href="Banner1.png" as="image" />
+    <!-- Favicon -->
+    <link rel="icon" href="Logo.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
+  <body>
+    <!-- Skip link untuk accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Header/Navbar -->
     <header>
       <div class="container navbar">
-        <img src="Logo.png" alt="enkajet Logo" class="logo" />
-        <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#portfolio">Portfolio</a>
-        </div>
+        <img src="Logo.png" alt="enkajet Logo" class="logo" loading="lazy" />
+        <nav aria-label="Main navigation">
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+          </div>
+        </nav>
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <div class="animated-text-shift">
-          <h1 class="animated-text">
-            Stay <span id="changing-word">Creative!</span>
-          </h1>
-        </div>
-        <p>Editor, Graphic Designer, & Web Developer.</p>
-      </div>
-    </section>
-
-    <section class="section about" id="about">
-      <div class="container">
-        <h2 class="section-title">&lt;About/&gt;</h2>
-        <div class="about-content vscode-style">
-          <pre><code>
-            <span class="comment">// Hi there! I'm nkz 😸</span>
-            <span class="keyword">const</span> name <span class="operator">=</span> <span class="string">"nakzuwu"</span>;
-            <span class="keyword">const</span> aliases <span class="operator">=</span> [<span class="string">"nakuzu"</span>, <span class="string">"enkajet"</span>, <span class="string">"nkz"</span>];
-            <span class="keyword">const</span> aboutMe <span class="operator">=</span> {
-              <span class="property">role</span>: <span class="string">"Graphic Designer & Web Developer"</span>,
-              <span class="property">since</span>: <span class="number">2021</span>,
-              <span class="property">tools</span>: [<span class="string">"Photoshop"</span>, <span class="string">"After Effect"</span>, <span class="string">"Premiere Pro"</span>],
-              <span class="property">design_commission</span>: <span class="string"><a href="https://www.instagram.com/nkzdzn" target="_blank">@nkzdzn</a></span>,
-              <span class="property">description</span>: <span class="string">
-                "Hello! My name is nakzuwu, you can call me nakuzu, nkz, or whatever 😆.
-                I'm a graphic designer since 2021 and love creating unique visuals.
-                I use Photoshop, After Effect, and Premiere Pro for my works.
-                I’m also exploring web development to bring my ideas to life on the web!"
-              </span>
-            };
-
-          <span class="function">console</span>.<span class="method">log</span>(<span class="string">"My bubub is Reika Valencia ❤️"</span>);
-
-          </code></pre>
-        </div>
-      </div>
-    </section>
-
-<!-- Portfolio Section -->
-<section class="section portfolio" id="portfolio">
-  <div class="container">
-    <h2 class="section-title">&lt;My_Portfolio/&gt;</h2>
-  
-    <!-- Profile -->
-    <div class="profile">
-      <div class="profile-photo">
-        <img src="profile.jpeg" alt="Profile Photo" />
-      </div>
-      <div class="profile-info">
-        <h3>nkz</h3>
-        <p>@nakzuwu</p>
-        <p>Developer & Designer</p>
-      </div>
-    </div>
-
-    <!-- Tabs -->
-    <div class="tabs">
-      <button class="tab-btn active-tab" data-tab="repos">GitHub Projects</button>
-      <button class="tab-btn" data-tab="images">Images</button>
-      <button class="tab-btn" data-tab="videos">Videos</button>
-    </div>
-
-    <!-- Tab Contents -->
-    <div class="tab-container">
-      <!-- GitHub Repos -->
-      <div id="tab-repos" class="tab-content">
-        <div class="repo-section">
-          <div class="portfolio-repos">
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <div class="animated-text-shift">
+            <h1 class="animated-text">
+              Stay <span id="changing-word">Creative!</span>
+            </h1>
           </div>
+          <p>Editor, Graphic Designer, & Web Developer.</p>
         </div>
-      </div>
+      </section>
 
-      <!-- Images -->
-      <div id="tab-images" class="tab-content hidden">
+      <!-- About Section -->
+      <section class="section about" id="about">
         <div class="container">
-          <h3>Images</h3>
-          <div class="portfolio-images grid">
+          <h2 class="section-title">&lt;About/&gt;</h2>
+          <div class="about-content vscode-style">
+            <pre><code>
+              <span class="comment">// Hi there! I'm nkz 😸</span>
+              <span class="keyword">const</span> name <span class="operator">=</span> <span class="string">"nakzuwu"</span>;
+              <span class="keyword">const</span> aliases <span class="operator">=</span> [<span class="string">"nakuzu"</span>, <span class="string">"enkajet"</span>, <span class="string">"nkz"</span>];
+              <span class="keyword">const</span> aboutMe <span class="operator">=</span> {
+                <span class="property">role</span>: <span class="string">"Graphic Designer & Web Developer"</span>,
+                <span class="property">since</span>: <span class="number">2021</span>,
+                <span class="property">tools</span>: [<span class="string">"Photoshop"</span>, <span class="string">"After Effect"</span>, <span class="string">"Premiere Pro"</span>],
+                <span class="property">design_commission</span>: <span class="string"><a href="https://www.instagram.com/nkzdzn" target="_blank" aria-label="Instagram design commission">@nkzdzn</a></span>,
+                <span class="property">description</span>: <span class="string">
+                  "Hello! My name is nakzuwu, you can call me nakuzu, nkz, or whatever 😆.
+                  I'm a graphic designer since 2021 and love creating unique visuals.
+                  I use Photoshop, After Effect, and Premiere Pro for my works.
+                  I'm also exploring web development to bring my ideas to life on the web!"
+                </span>
+              };
+
+            <span class="function">console</span>.<span class="method">log</span>(<span class="string">"My bubub is Reika Valencia ❤️"</span>);
+
+            </code></pre>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Videos -->
-      <div id="tab-videos" class="tab-content hidden">
+      <!-- Portfolio Section -->
+      <section class="section portfolio" id="portfolio">
         <div class="container">
-          <h3>Videos</h3>
-          <div class="portfolio-videos grid">
+          <h2 class="section-title">&lt;My_Portfolio/&gt;</h2>
+
+          <!-- Profile -->
+          <div class="profile">
+            <div class="profile-photo">
+              <img
+                src="profile.jpeg"
+                alt="Profile Photo of nkz"
+                loading="lazy"
+              />
+            </div>
+            <div class="profile-info">
+              <h3>nkz</h3>
+              <p>@nakzuwu</p>
+              <p>Developer & Designer</p>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <div class="tabs" role="tablist" aria-label="Portfolio categories">
+            <button
+              class="tab-btn active-tab"
+              data-tab="repos"
+              role="tab"
+              aria-selected="true"
+              aria-controls="tab-repos"
+            >
+              GitHub Projects
+            </button>
+            <button
+              class="tab-btn"
+              data-tab="images"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-images"
+            >
+              Images
+            </button>
+            <button
+              class="tab-btn"
+              data-tab="videos"
+              role="tab"
+              aria-selected="false"
+              aria-controls="tab-videos"
+            >
+              Videos
+            </button>
+          </div>
+
+          <!-- Tab Contents -->
+          <div class="tab-container">
+            <!-- GitHub Repos -->
+            <div
+              id="tab-repos"
+              class="tab-content"
+              role="tabpanel"
+              aria-labelledby="tab-repos"
+            >
+              <div class="repo-section">
+                <div class="portfolio-repos">
+                  <!-- Content akan diisi oleh JavaScript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Images -->
+            <div
+              id="tab-images"
+              class="tab-content hidden"
+              role="tabpanel"
+              aria-labelledby="tab-images"
+              hidden
+            >
+              <div class="container">
+                <h3>Images</h3>
+                <div class="portfolio-images grid">
+                  <!-- Content akan diisi oleh JavaScript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Videos -->
+            <div
+              id="tab-videos"
+              class="tab-content hidden"
+              role="tabpanel"
+              aria-labelledby="tab-videos"
+              hidden
+            >
+              <div class="container">
+                <h3>Videos</h3>
+                <div class="portfolio-videos grid">
+                  <!-- Content akan diisi oleh JavaScript -->
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-
-<!-- Social Section -->
-<section class="section social">
-  <div class="container">
-    <h2 class="section-title">&lt;social/&gt;</h2>
-    <div class="social-links linktree">
-      <a href="https://discord.gg/PsRbf8v3K2" target="_blank" class="social-item">
-        <img src="Discord logo.png" alt="Discord" />
-        <span>Join my Discord</span>
-      </a>
-      <a href="https://www.instagram.com/nkzdzn" target="_blank" class="social-item">
-        <img src="Instagram logo.png" alt="Instagram" />
-        <span>Follow on Instagram</span>
-      </a>
-      <a href="https://www.facebook.com/profile.php?id=100092551510270" target="_blank" class="social-item">
-        <img src="facebook logo.png" alt="Facebook" />
-        <span>Add on Facebook</span>
-      </a>
-      <a href="https://steamcommunity.com/id/_nkz/" target="_blank" class="social-item">
-        <img src="Steam logo.png" alt="Steam" />
-        <span>View my Steam Profile</span>
-      </a>
-    </div>
-  </div>
-</section>
-
+      <!-- Social Section -->
+      <section class="section social">
+        <div class="container">
+          <h2 class="section-title">&lt;social/&gt;</h2>
+          <div class="social-links linktree">
+            <a
+              href="https://discord.gg/PsRbf8v3K2"
+              target="_blank"
+              class="social-item"
+              aria-label="Join my Discord server"
+            >
+              <img src="Discord logo.png" alt="Discord" loading="lazy" />
+              <span>Join my Discord</span>
+            </a>
+            <a
+              href="https://www.instagram.com/nkzdzn"
+              target="_blank"
+              class="social-item"
+              aria-label="Follow me on Instagram"
+            >
+              <img src="Instagram logo.png" alt="Instagram" loading="lazy" />
+              <span>Follow on Instagram</span>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100092551510270"
+              target="_blank"
+              class="social-item"
+              aria-label="Add me on Facebook"
+            >
+              <img src="facebook logo.png" alt="Facebook" loading="lazy" />
+              <span>Add on Facebook</span>
+            </a>
+            <a
+              href="https://steamcommunity.com/id/_nkz/"
+              target="_blank"
+              class="social-item"
+              aria-label="View my Steam profile"
+            >
+              <img src="Steam logo.png" alt="Steam" loading="lazy" />
+              <span>View my Steam Profile</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer>
       <div class="container">
-        <p>Copyright nkz 2023</p>
+        <p>Copyright nkz 2025</p>
       </div>
     </footer>
 
