@@ -1,9 +1,13 @@
+/* ===========================
+ 🌟 PORTFOLIO LOADER
+=========================== */
 fetch("data/portfolio.json")
   .then((res) => res.json())
   .then((data) => {
     const imageContainer = document.querySelector(".portfolio-images");
     const videoContainer = document.querySelector(".portfolio-videos");
 
+    // Gambar
     data.images.forEach((src) => {
       const img = document.createElement("img");
       img.src = src;
@@ -11,39 +15,48 @@ fetch("data/portfolio.json")
       imageContainer.appendChild(img);
     });
 
+    // Video
     data.videos.forEach((src) => {
       const wrapper = document.createElement("div");
       wrapper.className = "grid-item";
 
       const video = document.createElement("video");
-      video.src = src;
-      video.muted = true;
-      video.autoplay = true;
-      video.loop = true;
-      video.playsInline = true;
+      Object.assign(video, {
+        src,
+        muted: true,
+        autoplay: true,
+        loop: true,
+        playsInline: true,
+      });
+
       video.setAttribute("playsinline", "");
       video.setAttribute("muted", "");
       video.setAttribute("preload", "auto");
-      video.controls = false;
-      video.style.pointerEvents = "none";
-      video.style.userSelect = "none";
-      video.style.display = "block";
-      video.style.width = "100%";
-      video.style.borderRadius = "10px";
+      Object.assign(video.style, {
+        pointerEvents: "none",
+        userSelect: "none",
+        display: "block",
+        width: "100%",
+        borderRadius: "10px",
+      });
 
       wrapper.appendChild(video);
       videoContainer.appendChild(wrapper);
     });
   })
   .catch((err) => console.error("❌ Gagal memuat portfolio.json:", err));
-document.addEventListener("contextmenu", function (e) {
-  if (e.target.tagName === "IMG" || e.target.tagName === "VIDEO") {
-    e.preventDefault();
-  }
+
+/* ===========================
+ 🖼️ NON-CLICKABLE MEDIA
+=========================== */
+document.addEventListener("contextmenu", (e) => {
+  if (["IMG", "VIDEO"].includes(e.target.tagName)) e.preventDefault();
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Daftar repositori manual
+/* ===========================
+ 💻 REPOSITORY SECTION
+=========================== */
+document.addEventListener("DOMContentLoaded", () => {
   const repos = [
     {
       name: "UsekaiWeb",
@@ -57,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description: "Backend untuk aplikasi VisionAid, menggunakan Python.",
       url: "https://github.com/nakzuwu/VisionAidBackend",
       language: "Python",
-      image: "repo-image.jpg", // Ganti dengan gambar repositori jika ada
+      image: "repo-image.jpg",
     },
     {
       name: "VisionAidFrontend",
@@ -74,8 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
       image: "repo-image.jpg",
     },
     {
-      name: "WarisanBiru ",
-      description: "Sebuah Game Pembelajaran mengenai Terumbu Karang",
+      name: "WarisanBiru",
+      description: "Sebuah Game Pembelajaran mengenai Terumbu Karang.",
       url: "https://github.com/nakzuwu/WarisanBiru",
       language: "C#",
       image: "repo-image.jpg",
@@ -87,42 +100,26 @@ document.addEventListener("DOMContentLoaded", function () {
   repos.forEach((repo) => {
     const repoCard = document.createElement("div");
     repoCard.classList.add("repo-card");
-
-    // Gambar repositori
-    const repoImage = document.createElement("img");
-    repoImage.src = repo.image; // Menggunakan gambar repositori yang dimasukkan manual
-    repoImage.alt = repo.name;
-    repoCard.appendChild(repoImage);
-
-    const repoTitle = document.createElement("h4");
-    repoTitle.textContent = repo.name;
-
-    const repoDesc = document.createElement("p");
-    repoDesc.textContent = repo.description;
-
-    const repoLink = document.createElement("a");
-    repoLink.href = repo.url;
-    repoLink.target = "_blank";
-    repoLink.textContent = "View on GitHub";
-
-    repoCard.appendChild(repoTitle);
-    repoCard.appendChild(repoDesc);
-    repoCard.appendChild(repoLink);
-
+    repoCard.innerHTML = `
+      <img src="${repo.image}" alt="${repo.name}">
+      <h4>${repo.name}</h4>
+      <p>${repo.description}</p>
+      <a href="${repo.url}" target="_blank">View on GitHub</a>
+    `;
     reposContainer.appendChild(repoCard);
   });
 });
 
+/* ===========================
+ 🔁 TAB SWITCHING
+=========================== */
 const tabs = document.querySelectorAll(".tab-btn");
 const contents = document.querySelectorAll(".tab-content");
 
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
-    // reset tab aktif
     tabs.forEach((t) => t.classList.remove("active-tab"));
     contents.forEach((c) => c.classList.add("hidden"));
-
-    // aktifkan tab baru
     tab.classList.add("active-tab");
     document
       .querySelector(`#tab-${tab.dataset.tab}`)
@@ -130,6 +127,9 @@ tabs.forEach((tab) => {
   });
 });
 
+/* ===========================
+ ✨ CHANGING WORD ANIMATION
+=========================== */
 const words = ["Creative!", "Happy!", "Smile!", "Positive!", "Humble!"];
 const wordEl = document.getElementById("changing-word");
 let index = 0;
@@ -139,237 +139,240 @@ function changeWord() {
   if (animating) return;
   animating = true;
 
-  // Animasi keluar
   wordEl.style.animation = "slideOut 0.4s ease forwards";
 
   setTimeout(() => {
-    // Ganti kata setelah keluar
     index = (index + 1) % words.length;
     wordEl.textContent = words[index];
-
-    // Animasi masuk
     wordEl.style.animation = "slideIn 0.4s ease forwards";
 
-    // Selesai animasi
-    setTimeout(() => {
-      animating = false;
-    }, 400);
+    setTimeout(() => (animating = false), 400);
   }, 400);
 }
 
-// Ganti setiap 2 detik
 setInterval(changeWord, 2000);
 
-
-// Fungsi untuk membuat placeholder
-function createImagePlaceholder(aspect = 'landscape') {
-  const placeholder = document.createElement('div');
+/* ===========================
+ 🧩 PLACEHOLDER UTILS
+=========================== */
+function createImagePlaceholder(aspect = "landscape") {
+  const placeholder = document.createElement("div");
   placeholder.className = `image-placeholder ${aspect}`;
   return placeholder;
 }
 
 function createVideoPlaceholder() {
-  const placeholder = document.createElement('div');
-  placeholder.className = 'video-placeholder';
+  const placeholder = document.createElement("div");
+  placeholder.className = "video-placeholder";
   return placeholder;
 }
 
-// Fungsi untuk load gambar dengan placeholder
-function loadImageWithPlaceholder(imgElement, src, alt = 'Portfolio image') {
-  const gridItem = imgElement.closest('.grid-item');
-  const placeholder = createImagePlaceholder(gridItem?.dataset.aspect || 'landscape');
-  
-  // Set placeholder sementara
-  imgElement.style.display = 'none';
+/* ===========================
+ 🖼️ LAZY LOAD MEDIA
+=========================== */
+function loadImageWithPlaceholder(img, src, alt = "Portfolio image") {
+  const gridItem = img.closest(".grid-item");
+  const placeholder = createImagePlaceholder(
+    gridItem?.dataset.aspect || "landscape"
+  );
+
+  img.style.display = "none";
   gridItem.appendChild(placeholder);
-  gridItem.classList.add('loading');
-  
-  imgElement.onload = function() {
-    // Gambar berhasil dimuat
+  gridItem.classList.add("loading");
+
+  img.onload = () => {
     placeholder.remove();
-    imgElement.style.display = 'block';
-    gridItem.classList.remove('loading');
-    gridItem.classList.add('loaded');
-    
-    // Trigger custom event untuk animasi
-    setTimeout(() => {
-      imgElement.style.opacity = '1';
-    }, 50);
+    img.style.display = "block";
+    gridItem.classList.replace("loading", "loaded");
+    setTimeout(() => (img.style.opacity = "1"), 50);
   };
-  
-  imgElement.onerror = function() {
-    // Gambar gagal dimuat
-    placeholder.classList.add('error');
-    gridItem.classList.add('error');
-    gridItem.classList.remove('loading');
+
+  img.onerror = () => {
+    placeholder.classList.add("error");
+    gridItem.classList.add("error");
+    gridItem.classList.remove("loading");
     console.error(`Failed to load image: ${src}`);
   };
-  
-  // Set source setelah event listener
-  imgElement.src = src;
-  imgElement.alt = alt;
+
+  img.src = src;
+  img.alt = alt;
 }
 
-// Fungsi untuk load video dengan placeholder
-function loadVideoWithPlaceholder(videoElement, src, poster = '', alt = 'Portfolio video') {
-  const gridItem = videoElement.closest('.grid-item');
+function loadVideoWithPlaceholder(
+  video,
+  src,
+  poster = "",
+  alt = "Portfolio video"
+) {
+  const gridItem = video.closest(".grid-item");
   const placeholder = createVideoPlaceholder();
-  
-  // Set placeholder sementara
-  videoElement.style.display = 'none';
+
+  video.style.display = "none";
   gridItem.appendChild(placeholder);
-  gridItem.classList.add('loading');
-  
-  videoElement.onloadstart = function() {
-    // Video mulai loading
-    console.log('Video loading started:', src);
-  };
-  
-  videoElement.onloadeddata = function() {
-    // Video data loaded
+  gridItem.classList.add("loading");
+
+  video.onloadeddata = () => {
     placeholder.remove();
-    videoElement.style.display = 'block';
-    gridItem.classList.remove('loading');
-    gridItem.classList.add('loaded');
-    
-    setTimeout(() => {
-      videoElement.style.opacity = '1';
-    }, 50);
+    video.style.display = "block";
+    gridItem.classList.replace("loading", "loaded");
+    setTimeout(() => (video.style.opacity = "1"), 50);
   };
-  
-  videoElement.onerror = function() {
-    // Video gagal dimuat
-    placeholder.classList.add('error');
-    gridItem.classList.add('error');
-    gridItem.classList.remove('loading');
+
+  video.onerror = () => {
+    placeholder.classList.add("error");
+    gridItem.classList.add("error");
+    gridItem.classList.remove("loading");
     console.error(`Failed to load video: ${src}`);
   };
-  
-  // Set source
-  if (poster) videoElement.poster = poster;
-  videoElement.src = src;
+
+  if (poster) video.poster = poster;
+  video.src = src;
 }
 
-// Contoh implementasi untuk portfolio images
+/* ===========================
+ 🎞️ PORTFOLIO INITIALIZER
+=========================== */
 function initializePortfolioImages() {
-  const imagesGrid = document.querySelector('.portfolio-images.grid');
+  const imagesGrid = document.querySelector(".portfolio-images.grid");
   if (!imagesGrid) return;
-  
-  // Contoh data images (ganti dengan data aktual Anda)
+
   const portfolioImages = [
-    { src: 'images/design1.jpg', alt: 'Graphic Design Project 1', aspect: 'landscape' },
-    { src: 'images/design2.jpg', alt: 'Graphic Design Project 2', aspect: 'portrait' },
-    { src: 'images/design3.jpg', alt: 'Graphic Design Project 3', aspect: 'square' },
-    { src: 'images/design4.jpg', alt: 'Graphic Design Project 4', aspect: 'landscape' },
-    { src: 'images/design5.jpg', alt: 'Graphic Design Project 5', aspect: 'portrait' },
-    { src: 'images/design6.jpg', alt: 'Graphic Design Project 6', aspect: 'landscape' }
+    { src: "images/design1.jpg", alt: "Graphic Design 1", aspect: "landscape" },
+    { src: "images/design2.jpg", alt: "Graphic Design 2", aspect: "portrait" },
+    { src: "images/design3.jpg", alt: "Graphic Design 3", aspect: "square" },
+    { src: "images/design4.jpg", alt: "Graphic Design 4", aspect: "landscape" },
   ];
-  
-  portfolioImages.forEach((image, index) => {
-    const gridItem = document.createElement('div');
-    gridItem.className = 'grid-item';
-    gridItem.setAttribute('data-type', 'image');
-    gridItem.setAttribute('data-aspect', image.aspect);
-    
-    const img = document.createElement('img');
-    img.loading = 'lazy';
-    
+
+  portfolioImages.forEach((image, i) => {
+    const gridItem = document.createElement("div");
+    gridItem.className = "grid-item";
+    gridItem.dataset.type = "image";
+    gridItem.dataset.aspect = image.aspect;
+
+    const img = document.createElement("img");
+    img.loading = "lazy";
     gridItem.appendChild(img);
     imagesGrid.appendChild(gridItem);
-    
-    // Load image dengan placeholder
-    setTimeout(() => {
-      loadImageWithPlaceholder(img, image.src, image.alt);
-    }, index * 100); // Stagger loading untuk performance
+
+    setTimeout(
+      () => loadImageWithPlaceholder(img, image.src, image.alt),
+      i * 100
+    );
   });
 }
 
-// Contoh implementasi untuk portfolio videos
 function initializePortfolioVideos() {
-  const videosGrid = document.querySelector('.portfolio-videos.grid');
+  const videosGrid = document.querySelector(".portfolio-videos.grid");
   if (!videosGrid) return;
-  
-  // Contoh data videos (ganti dengan data aktual Anda)
+
   const portfolioVideos = [
-    { src: 'videos/edit1.mp4', poster: 'videos/poster1.jpg', alt: 'Video Edit Project 1' },
-    { src: 'videos/edit2.mp4', poster: 'videos/poster2.jpg', alt: 'Video Edit Project 2' },
-    { src: 'videos/edit3.mp4', poster: 'videos/poster3.jpg', alt: 'Video Edit Project 3' },
-    { src: 'videos/edit4.mp4', poster: 'videos/poster4.jpg', alt: 'Video Edit Project 4' }
+    {
+      src: "videos/edit1.mp4",
+      poster: "videos/poster1.jpg",
+      alt: "Video Edit 1",
+    },
+    {
+      src: "videos/edit2.mp4",
+      poster: "videos/poster2.jpg",
+      alt: "Video Edit 2",
+    },
   ];
-  
-  portfolioVideos.forEach((video, index) => {
-    const gridItem = document.createElement('div');
-    gridItem.className = 'grid-item';
-    gridItem.setAttribute('data-type', 'video');
-    
-    const videoElement = document.createElement('video');
-    videoElement.controls = true;
-    videoElement.muted = true;
-    videoElement.preload = 'metadata';
-    
-    gridItem.appendChild(videoElement);
+
+  portfolioVideos.forEach((video, i) => {
+    const gridItem = document.createElement("div");
+    gridItem.className = "grid-item";
+    gridItem.dataset.type = "video";
+
+    const videoEl = document.createElement("video");
+    videoEl.controls = true;
+    videoEl.muted = true;
+    videoEl.preload = "metadata";
+
+    gridItem.appendChild(videoEl);
     videosGrid.appendChild(gridItem);
-    
-    // Load video dengan placeholder
-    setTimeout(() => {
-      loadVideoWithPlaceholder(videoElement, video.src, video.poster, video.alt);
-    }, index * 150);
+
+    setTimeout(
+      () =>
+        loadVideoWithPlaceholder(videoEl, video.src, video.poster, video.alt),
+      i * 150
+    );
   });
 }
 
-// Intersection Observer untuk lazy loading
+/* ===========================
+ 💤 INTERSECTION OBSERVER
+=========================== */
 function initializeLazyLoading() {
-  const lazyMedia = document.querySelectorAll('img[loading="lazy"], video[loading="lazy"]');
-  
-  if ('IntersectionObserver' in window) {
-    const lazyMediaObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const media = entry.target;
-          media.src = media.dataset.src;
-          if (media.dataset.poster) {
-            media.poster = media.dataset.poster;
-          }
-          lazyMediaObserver.unobserve(media);
-        }
-      });
-    });
-    
-    lazyMedia.forEach(media => {
-      lazyMediaObserver.observe(media);
-    });
-  }
-}
+  const lazyMedia = document.querySelectorAll(
+    'img[loading="lazy"], video[loading="lazy"]'
+  );
+  if (!("IntersectionObserver" in window)) return;
 
-// Initialize ketika tab images/videos diaktifkan
-function initializeTabContent(tabId) {
-  if (tabId === 'tab-images') {
-    initializePortfolioImages();
-  } else if (tabId === 'tab-videos') {
-    initializePortfolioVideos();
-  }
-}
-
-// Event listener untuk tab switching
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize lazy loading
-  initializeLazyLoading();
-  
-  // Tab switching handler
-  document.querySelectorAll('.tab-btn').forEach(button => {
-    button.addEventListener('click', function() {
-      const tabId = this.dataset.tab;
-      initializeTabContent(`tab-${tabId}`);
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const media = entry.target;
+      media.src = media.dataset.src;
+      if (media.dataset.poster) media.poster = media.dataset.poster;
+      obs.unobserve(media);
     });
   });
-  
-  // Initialize first tab
-  const activeTab = document.querySelector('.tab-btn.active-tab');
-  if (activeTab) {
-    const tabId = activeTab.dataset.tab;
-    initializeTabContent(`tab-${tabId}`);
-  }
+
+  lazyMedia.forEach((m) => observer.observe(m));
+}
+
+/* ===========================
+ 📁 REPO GRID (LIMIT + SHOW MORE)
+=========================== */
+const repoContainer = document.getElementById("repo-grid");
+const showMoreBtn = document.getElementById("show-more");
+const reposList = Array.from({ length: 20 }, (_, i) => ({
+  name: `Project-${i + 1}`,
+  desc: "My awesome project!",
+  link: "#",
+}));
+let visibleCount = 10;
+
+function renderRepos() {
+  repoContainer.innerHTML = reposList
+    .slice(0, visibleCount)
+    .map(
+      (r) => `
+        <div class="repo-card">
+          <h4>${r.name}</h4>
+          <p>${r.desc}</p>
+          <a href="${r.link}" target="_blank">View Repo</a>
+        </div>
+      `
+    )
+    .join("");
+
+  showMoreBtn.classList.toggle("hidden", visibleCount >= reposList.length);
+}
+
+showMoreBtn.addEventListener("click", () => {
+  visibleCount += 10;
+  renderRepos();
 });
 
+renderRepos();
 
+/* ===========================
+ 🚀 INITIALIZATION
+=========================== */
+document.addEventListener("DOMContentLoaded", () => {
+  initializeLazyLoading();
 
+  // Tab logic
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const tabId = this.dataset.tab;
+      initializePortfolioImages();
+      initializePortfolioVideos();
+    });
+  });
+
+  // Init first tab
+  const activeTab = document.querySelector(".tab-btn.active-tab");
+  if (activeTab) initializePortfolioImages();
+});
